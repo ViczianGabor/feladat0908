@@ -8,6 +8,12 @@ namespace ismetles01
 {
     class Program
     {
+
+        static int gepNyer =0;
+        static int embernyer = 0;
+        static int menet = 0;
+        
+
         static string[] lehetoseg = new string[] { "Kő", "Papír", "Olló" };
 
         static int GepValasztas()
@@ -41,21 +47,67 @@ namespace ismetles01
         {
             if (gep == 0 && ember == 1 || gep == 1 && ember == 2 || gep == 2 && ember == 0)
             {
+                embernyer++;
                 return 2;
             }
             else if (gep == ember)
             {
                 return 0;
             }
-            else return 1;
+            else
+            {
+                gepNyer++;
+                return 1;
+
+            }
+            
+            
+        }
+
+        private static bool akarjatszani()
+        {
+
+            Console.WriteLine("-------------------");
+            Console.Write("Tovább [I/N]:");
+            string valasz = Console.ReadLine().ToLower();
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("\n-------------------");
+            Console.ResetColor();
+            if (valasz == "i")
+            {
+                return true;
+            }
+            else return false;
+
+            //throw new NotImplementedException();
+
+
+
+        }
+
+
+        private static void Statisztikairas()
+        {
+
+            Console.WriteLine("\t Menetek száma: {0},"+"játékos győzelmek száma: {1}"+"Gép győzelmek száma: {2}",menet, embernyer,gepNyer);
+
+
         }
         static void Main(string[] args)
         {
 
-            int jatekosValasz = JatekosValasztas();
-            int gepValasz = GepValasztas();
-            EredmenyKiiras(gepValasz, jatekosValasz);
+            bool tovabb = true;
 
+            while (tovabb)
+            {
+                menet++;
+                int jatekosValasz = JatekosValasztas();
+                int gepValasz = GepValasztas();
+                EredmenyKiiras(gepValasz, jatekosValasz);
+                akarjatszani();
+            }
+
+            Statisztikairas();
             Console.ReadKey();
         }
     }
