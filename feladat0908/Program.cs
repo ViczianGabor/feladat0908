@@ -89,7 +89,16 @@ namespace ismetles01
 
         private static void Statisztikairas()
         {
+            StreamWriter sw = new StreamWriter("Statisztika.txt");
+            
+            sw.Write(menet+";");
+            sw.Write(embernyer+";");
+            sw.WriteLine(gepNyer);
 
+
+
+
+            sw.Close();
             Console.WriteLine("\t Menetek száma: {0},"+"játékos győzelmek száma: {1}"+"Gép győzelmek száma: {2}",menet, embernyer,gepNyer);
 
 
