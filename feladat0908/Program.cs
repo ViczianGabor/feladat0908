@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ismetles01
 {
@@ -93,8 +94,31 @@ namespace ismetles01
 
 
         }
+
+        private static void StatisztikaFajlbol()
+        {
+            StreamReader sr = new StreamReader("Statisztika.txt");
+            int j = 0;
+            string[] atmeneti;
+            while (j < !sr.EndOfStream)
+            {
+                atmeneti = sr.ReadLine().Split(';');
+                int sor = Convert.ToInt32(atmeneti[j]);
+
+                Console.WriteLine(sor);
+                j++;
+
+
+            }
+            Console.WriteLine("------------->statisztika vége<----------------");
+
+
+            sr.Close();
+        }
+        
         static void Main(string[] args)
         {
+            StatisztikaFajlbol();
 
             bool tovabb = true;
 
@@ -104,7 +128,7 @@ namespace ismetles01
                 int jatekosValasz = JatekosValasztas();
                 int gepValasz = GepValasztas();
                 EredmenyKiiras(gepValasz, jatekosValasz);
-                akarjatszani();
+                tovabb = akarjatszani();
             }
 
             Statisztikairas();
