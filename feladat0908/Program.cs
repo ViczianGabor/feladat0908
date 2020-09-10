@@ -98,15 +98,23 @@ namespace ismetles01
         private static void StatisztikaFajlbol()
         {
             StreamReader sr = new StreamReader("Statisztika.txt");
-            int j = 0;
-            string[] atmeneti;
-            while (j < !sr.EndOfStream)
+            
+            
+            while (!sr.EndOfStream)
             {
-                atmeneti = sr.ReadLine().Split(';');
-                int sor = Convert.ToInt32(atmeneti[j]);
+                string[] atmeneti = sr.ReadLine().Split(';');
+                int[] adat = new int[3];
+                // adat[0] =int.Parse(atmeneti[0]);
+                //   adat[1] = int.Parse(atmeneti[1]);
+                //  adat[2] = int.Parse(atmeneti[2]);
 
-                Console.WriteLine(sor);
-                j++;
+                for (int i = 0; i < adat.Length; i++)
+                {
+                    adat[i] = int.Parse(atmeneti[i]);
+                    
+                }
+                Console.WriteLine("{0} {1} {2}",adat[0],adat[1],adat[2]);
+                
 
 
             }
